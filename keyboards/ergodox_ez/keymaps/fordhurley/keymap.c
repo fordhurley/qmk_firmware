@@ -16,6 +16,14 @@ enum custom_keycodes {
   RGB_SLD
 };
 
+enum unicode_names {
+    THMBSUP
+};
+
+const uint32_t PROGMEM unicode_map[] = {
+    [THMBSUP]  = 0x1F44D,  // 👍
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
  *
@@ -54,7 +62,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 1: Symbol Layer
  *
  * ,---------------------------------------------------.           ,--------------------------------------------------.
- * |  RESET  |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+ * |  RESET  |      |      |      |      |      |      |           |  👍  |      |      |      |      |      |        |
  * |---------+------+------+------+------+------+------|           |------+------+------+------+------+------+--------|
  * |         |      |      |  Up  |      |      |      |           |      |   -  |   &  |   *  |   '  |   "  |        |
  * |---------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -74,7 +82,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [SYMB] = LAYOUT_ergodox_pretty(
   // left hand
-  RESET,   _______, _______, _______, _______,  _______, _______,     _______, _______, _______, _______, _______, _______, _______,
+  RESET,   _______, _______, _______, _______,  _______, _______,     X(THMBSUP), _______, _______, _______, _______, _______, _______,
   _______, _______, _______, KC_UP,   _______,  _______, _______,     _______,   KC_MINS, KC_AMPR, KC_ASTR, KC_QUOT, KC_DQUO, _______,
   _______, _______, KC_LEFT, KC_DOWN, KC_RIGHT, _______,                         KC_UNDS, KC_LCBR, KC_LPRN, KC_LBRC, _______, _______,
   _______, _______, _______, _______, _______,  _______, _______,     _______,   KC_COLN, KC_RCBR, KC_RPRN, KC_RBRC, KC_RABK, _______,
