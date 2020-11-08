@@ -41,7 +41,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                        ,-------------.       ,-------------.
  *                                        |      | LOCK |       | Home | End  |
  *                                 ,------|------|------|       |------+------+------.
- *                                 |      |      | Home |       |      |      |      |
+ *                                 |      |      |      |       |      |      |      |
  *                                 | Space|  -   |------|       |------|  =   |Enter |
  *                                 |      |      | BkSp |       | Del  |      |      |
  *                                 `--------------------'       `--------------------'
@@ -56,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_LCTL,         OSL(SYMB),     OSL(NMPD),     KC_LOPT, KC_LCMD,                                              KC_RCMD, KC_LEFT, KC_DOWN, KC_UP,            KC_RIGHT,
 
                                                                  XXXXXXX, LCTL(LCMD(KC_Q)),        KC_HOME, KC_END,
-                                                                          KC_HOME,                 XXXXXXX,
+                                                                          XXXXXXX,                 XXXXXXX,
                                                          KC_SPC, KC_MINS, KC_BSPC,                 KC_DEL, KC_EQL, KC_ENT
 ),
 /* Keymap 1: Symbol Layer
