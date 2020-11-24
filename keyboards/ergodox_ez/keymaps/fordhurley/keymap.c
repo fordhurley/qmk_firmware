@@ -13,14 +13,23 @@ enum custom_keycodes {
 #else
     VRSN = SAFE_RANGE,
 #endif
-};
-
-enum unicode_names {
     THMBSUP,
 };
 
-const uint32_t PROGMEM unicode_map[] = {
-    [THMBSUP]  = 0x1F44D,  // 👍
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch(keycode) {
+        case VRSN:
+            if (record->event.pressed) {
+                SEND_STRING(QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
+            }
+            return false;
+        case THMBSUP:
+            if (record->event.pressed) {
+                SEND_STRING(":+1:"); // configured to 👍 as a macOS "text shortcut"
+            }
+            return false;
+    }
+    return true;
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -81,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [SYMB] = LAYOUT_ergodox_pretty(
   // left hand
-  RESET,   _______, _______, _______, _______,  _______, _______,     X(THMBSUP), _______, _______, _______, _______, _______, _______,
+  RESET,   _______, _______, _______, _______,  _______, _______,     THMBSUP, _______, _______, _______, _______, _______, _______,
   _______, _______, _______, _______, _______,  _______, _______,     _______,   KC_MINS, KC_AMPR, KC_ASTR, KC_QUOT, KC_DQUO, _______,
   _______, _______, _______, _______, _______, _______,                          KC_UNDS, KC_LCBR, KC_LPRN, KC_LBRC, _______, _______,
   _______, _______, _______, _______, _______,  _______, _______,     _______,   KC_COLN, KC_RCBR, KC_RPRN, KC_RBRC, KC_RABK, _______,
@@ -127,17 +136,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       _______, _______, _______,     _______, _______, _______
 ),
 };
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (record->event.pressed) {
-        switch (keycode) {
-        case VRSN:
-            SEND_STRING (QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
-            return false;
-        }
-    }
-    return true;
-}
 
 // Runs just one time when the keyboard initializes.
 void keyboard_post_init_user(void) {
