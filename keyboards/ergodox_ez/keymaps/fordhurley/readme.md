@@ -11,9 +11,9 @@ it's easy to enter commands like opt-left, opt-bksp, cmd-bksp, cmd-right etc.
 
 I'm a software developer, so I try to keep common symbols easy to access.
 
-The left and right pinkies on the home row (`a` and `;`) are "mod-tap" modifiers
-to enable the symbol layer (tap to send `a`, hold to access the symbols on layer
-1).
+The left pinky has mod-tap modifiers: tap to send the normal key or hold to
+activate a layer. Holding `a` activates the symbol layer and holding `z`
+activates the numpad layer.
 
 I started this layout in Oryx, and converted it to QMK:
 https://configure.ergodox-ez.com/ergodox-ez/layouts/gQKOa/QBdMm/0

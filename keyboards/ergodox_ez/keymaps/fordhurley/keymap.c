@@ -4,7 +4,7 @@
 enum layers {
     BASE, // default layer
     SYMB, // symbols
-    NMPD,  // media keys
+    NMPD, // numpad
 };
 
 enum custom_keycodes {
@@ -33,7 +33,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-/* Keymap 0: Basic layer
+/*
+ * Keymap 0: Basic layer
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |   `    |   1  |   2  |   3  |   4  |   5  |   [  |           |  ]   |   6  |   7  |   8  |   9  |   0  |  BkSp  |
@@ -42,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * | Esc    | A/L1 |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |  ;   |   '    |
  * |--------+------+------+------+------+------|   {  |           |  }   |------+------+------+------+------+--------|
- * | LShift |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |  /   | RShift |
+ * | LShift | Z/L2 |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |  /   | RShift |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   | Ctrl | OSL1 | OSL2 |  Opt |  Cmd |                                       | Cmd  | Left | Down |  Up  | Right |
  *   `----------------------------------'                                       `-----------------------------------'
@@ -55,11 +56,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 `--------------------'       `--------------------'
  */
 [BASE] = LAYOUT_ergodox_pretty(
-  // left hand
   KC_GRAVE, KC_1,          KC_2,      KC_3,    KC_4,    KC_5,  KC_LBRC,             KC_RBRC,  KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
   KC_TAB,   KC_Q,          KC_W,      KC_E,    KC_R,    KC_T,  KC_LPRN,             KC_RPRN,  KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
   KC_ESC,   LT(SYMB,KC_A), KC_S,      KC_D,    KC_F,    KC_G,                                 KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-  KC_LSFT,  KC_Z,          KC_X,      KC_C,    KC_V,    KC_B,  KC_LCBR,             KC_RCBR,  KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
+  KC_LSFT,  LT(NMPD,KC_Z), KC_X,      KC_C,    KC_V,    KC_B,  KC_LCBR,             KC_RCBR,  KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
 
   KC_LCTL,  OSL(SYMB),     OSL(NMPD), KC_LOPT, KC_LCMD,                                                KC_RCMD, KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT,
 
@@ -67,7 +67,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                XXXXXXX,             XXXXXXX,
                                               KC_SPC, KC_MINS, KC_BSPC,             KC_DEL, KC_EQL, KC_ENT
 ),
-/* Keymap 1: Symbol Layer
+
+/*
+ * Keymap 1: Symbol Layer
  *
  * ,---------------------------------------------------.           ,--------------------------------------------------.
  * |  RESET  |      |      |      |      |      |      |           |  👍  |      |      |      |      |      |        |
@@ -89,7 +91,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 `--------------------'       `--------------------'
  */
 [SYMB] = LAYOUT_ergodox_pretty(
-  // left hand
   RESET,   _______, _______, _______, _______,  _______, _______,     THMBSUP, _______, _______, _______, _______, _______, _______,
   _______, _______, _______, _______, _______,  _______, _______,     _______,   KC_MINS, KC_AMPR, KC_ASTR, KC_QUOT, KC_DQUO, _______,
   _______, _______, _______, _______, _______, _______,                          KC_UNDS, KC_LCBR, KC_LPRN, KC_LBRC, _______, _______,
@@ -101,7 +102,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                          KC_VOLD,     _______,
                                        KC_MPLY, KC_MNXT, KC_MUTE,     _______, _______, _______
 ),
-/* Keymap 2: Numpad
+
+/*
+ * Keymap 2: Numpad
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |  VRSN  |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
@@ -123,7 +126,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 `--------------------'       `--------------------'
  */
 [NMPD] = LAYOUT_ergodox_pretty(
-  // left hand
   VRSN,    _______, _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______, _______, _______,
   _______, _______, _______, _______, _______, _______, _______,     _______, _______, KC_P7,   KC_P8,   KC_P9,   _______, _______,
   _______, _______, _______, _______, _______, _______,                       _______, KC_P4,   KC_P5,   KC_P6,   _______, _______,
